@@ -1,9 +1,4 @@
-# DMRetriever/__init__.py
-__all__ = [
-    "core",
-    "encoder",
-    "decoder",
-    "bidirectional_qwen3",
-    "BiAttn_Ada",
-    "experiments",
-]
+from .biencoder import BiEncoderModel
+from .config import ModelConfig, DataConfig, TrainConfig
+
+__all__ = ["BiEncoderModel", "ModelConfig", "DataConfig", "TrainConfig"]
