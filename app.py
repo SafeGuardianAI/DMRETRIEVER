@@ -85,7 +85,12 @@ def _date_range_to_window(value):
 
 with page_search:
     if run:
-        if not query.strip() and not sourcecountry.strip() and not theme.strip():
+        if (
+            not query.strip()
+            and not sourcecountry.strip()
+            and not sourcelang.strip()
+            and not theme.strip()
+        ):
             st.warning("Enter a query or at least one filter.")
             st.stop()
 
