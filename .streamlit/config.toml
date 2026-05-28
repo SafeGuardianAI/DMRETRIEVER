@@ -1,0 +1,14 @@
+# Streamlit configuration for the DMRetriever spatiotemporal app.
+
+[server]
+# Streamlit's file watcher walks `sys.modules` and probes `__path__`
+# on every imported module. The `transformers` package lazy-imports
+# vision submodules (vitpose, yolos, zoedepth, vivit, …) on first
+# attribute access, several of which require `torchvision`. Since
+# DMRetriever uses only text encoders, torchvision is not installed,
+# and the watcher spams the console with ModuleNotFoundError tracebacks.
+#
+# Disabling the watcher silences this. The tradeoff is losing the
+# "source file changed, rerun?" prompt. For development, either
+# re-enable the watcher here or `pip install torchvision`.
+fileWatcherType = "none"

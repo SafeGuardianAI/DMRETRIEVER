@@ -30,6 +30,23 @@ pip install -r requirements-pipeline.txt
 streamlit run app.py
 ```
 
+### Startup noise about `torchvision`
+
+Streamlit's file watcher walks every imported module and probes its
+`__path__`. The `transformers` package lazy-imports vision submodules
+(vitpose, yolos, zoedepth, …) on attribute access, several of which
+need `torchvision`. Since DMRetriever uses only text encoders we don't
+install torchvision, so those probes raise `ModuleNotFoundError`.
+
+The app still runs; the tracebacks are watcher noise, not crashes.
+`.streamlit/config.toml` disables the watcher (`fileWatcherType = "none"`)
+to silence them. If you're actively editing `app.py` and want hot
+reload back, either remove that line or run:
+
+```bash
+pip install torchvision
+```
+
 ## Programmatic use
 
 ```python
