@@ -16,6 +16,7 @@ cache/
 logs/
 wandb/
 .env
+.streamlit/secrets.toml
 
 *.npy
 *.npz
